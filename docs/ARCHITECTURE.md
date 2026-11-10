@@ -3,7 +3,7 @@
 **Status:** Approved Technical Architecture  
 **Scope:** Task A — IoT Sensor Simulator, Event Engineering, Unified Runner, and Kafka Producer  
 **System:** AtmoSync — Micro-Climate Arbitrage Analytics  
-**Target Repository:** `Infotact_Data_Analyst_internship`  
+**Target Repository:** `AtmoSync_Micro_Climate_Arbitrage_Analytics`
 **Author:** Siddarth (Lead Data Engineer — Task A)  
 
 ---
@@ -204,7 +204,7 @@ Manages the fleet of configured containers across time:
 
 The event engineering subsystem guarantees strict adherence to the Version-1 telemetry contract.
 
-For the exhaustive field-by-field specification, constraints, and validation matrix, refer to [DATA_CONTRACT.md](file:///e:/AtmoSync/Infotact_Data_Analyst_internship/docs/DATA_CONTRACT.md).
+For the exhaustive field-by-field specification, constraints, and validation matrix, refer to [DATA_CONTRACT.md](DATA_CONTRACT.md).
 
 ```text
 +-------------------+

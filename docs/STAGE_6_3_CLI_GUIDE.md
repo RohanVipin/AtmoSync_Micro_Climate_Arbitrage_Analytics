@@ -47,7 +47,7 @@ Terminal User / Process Supervisor
 ### Kafka Broker (Optional for JSONL mode; Required for Kafka/Both modes)
 When running in `kafka` or `both` mode, ensure a Kafka cluster or the project's local KRaft Docker container is running:
 ```bash
-docker-compose -f docker/docker-compose.kafka.yml up -d
+docker compose -f docker-compose.kafka.yml up -d
 ```
 Verify broker accessibility on `localhost:9092`.
 
@@ -183,5 +183,5 @@ Kafka In-Flight Pending:     0
 | :--- | :--- | :--- |
 | `Configuration error: Configuration file not found` | Invalid `-c` or `--config` path. | Verify configuration file exists at specified path. Default: `simulation/config/simulation_config.yaml`. |
 | `Maximum simulation cycles must be a positive integer` | Passed `--cycles 0` or negative number. | Specify an integer $\ge 1$ or omit `--cycles` for continuous streaming. |
-| `Failed to initialize output destination: ... Failed to resolve 'localhost:9092'` | Kafka broker unreachable in `both` or `kafka` mode. | Start broker via Docker Compose (`docker-compose -f docker/docker-compose.kafka.yml up -d`) or use `-m jsonl`. |
+| `Failed to initialize output destination: ... Failed to resolve 'localhost:9092'` | Kafka broker unreachable in `both` or `kafka` mode. | Start broker via Docker Compose (`docker compose -f docker-compose.kafka.yml up -d`) or use `-m jsonl`. |
 | `Cannot write event: JsonlSink is closed` | File permissions or I/O failure. | Verify write permissions for target `--jsonl-path`. |

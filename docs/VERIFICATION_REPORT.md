@@ -3,7 +3,7 @@
 **Status:** Approved Technical Verification Report  
 **Scope:** Task A — IoT Sensor Simulator, Event Engineering, Unified Runner, and Kafka Producer  
 **System:** AtmoSync — Micro-Climate Arbitrage Analytics  
-**Target Repository:** `Infotact_Data_Analyst_internship`  
+**Target Repository:** `AtmoSync_Micro_Climate_Arbitrage_Analytics`
 **Author:** Siddarth (Lead Data Engineer — Task A)  
 
 ---

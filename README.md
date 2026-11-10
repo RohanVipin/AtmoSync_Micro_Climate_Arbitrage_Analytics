@@ -1,8 +1,8 @@
 # AtmoSync — Micro-Climate Arbitrage Analytics
 ## Task A: IoT Sensor Simulator, Event Engineering, Unified Runner, and Kafka Producer
 
-**Repository:** `Infotact_Data_Analyst_internship`  
-**Branch:** `feature/siddarth-simulation-event-engineering`  
+**Repository:** `AtmoSync_Micro_Climate_Arbitrage_Analytics`
+**Branch:** `feature/siddarth-task-a`
 **Owner:** Siddarth (Lead Data Engineer — Task A)  
 **Status:** Implementation Complete & Operationally Verified  
 
@@ -93,7 +93,7 @@ Task A is built exclusively using production-grade open-source technologies:
 ## 5. Repository Structure
 
 ```text
-Infotact_Data_Analyst_internship/
+AtmoSync_Micro_Climate_Arbitrage_Analytics/
 ├── docker-compose.kafka.yml          # Single-node KRaft Kafka broker configuration
 ├── requirements.txt                  # Core production runtime dependencies
 ├── requirements-dev.txt              # Development, testing, and coverage dependencies
@@ -145,11 +145,11 @@ For complete operating system instructions, see [docs/OPERATIONS_GUIDE.md](docs/
 ### Step 1: Environment Setup
 ```powershell
 # 1. Clone repository and navigate to root
-git clone https://github.com/RohanVipin/Infotact_Data_Analyst_internship.git
-cd Infotact_Data_Analyst_internship
+git clone https://github.com/RohanVipin/AtmoSync_Micro_Climate_Arbitrage_Analytics.git
+cd AtmoSync_Micro_Climate_Arbitrage_Analytics
 
 # 2. Check out feature branch
-git checkout feature/siddarth-simulation-event-engineering
+git checkout feature/siddarth-task-a
 
 # 3. Create and activate virtual environment
 py -3.13 -m venv .venv
@@ -325,7 +325,7 @@ For the full QA ledger, failure injection analysis, and evidence inventory, see 
 ## 13. Project Status
 
 - **Task A Status:** Completed, fully tested (373 passed unit tests, 91% coverage), and documented across four comprehensive technical guides.
-- **Git Baseline:** Synced on branch `feature/siddarth-simulation-event-engineering` at commit `f67f9853ddf9a0892449ddcf2184630099c89284`.
+- **Git Baseline:** Synced on branch `feature/siddarth-task-a` at baseline commit `6296daa10faee5a46b37547459fc4a25fac6ffa8` (*"Chore:import existing atmosync project implementation"*).
 - **Downstream Readiness:** The canonical Version-1 event schema and Kafka topic `atmosync.telemetry.v1` are stable and ready for Task B ingestion handoff.
 
 ---

@@ -3,7 +3,7 @@
 **Status:** Approved Working Data Contract  
 **Producer Module:** Task A — IoT Sensor Simulator & Kafka Producer  
 **Consumer Modules:** Task B (Ingestion Pipeline / Snowflake), Task C (dbt Transformations), Task D (Analytics & Dashboards)  
-**Target Repository:** `Infotact_Data_Analyst_internship`  
+**Target Repository:** `AtmoSync_Micro_Climate_Arbitrage_Analytics`
 **Author:** Siddarth (Lead Data Engineer — Task A)  
 
 ---

@@ -3,7 +3,7 @@
 **Status:** Approved Operational Guide  
 **Scope:** Task A — IoT Sensor Simulator, Event Engineering, Unified Runner, and Kafka Producer  
 **System:** AtmoSync — Micro-Climate Arbitrage Analytics  
-**Target Repository:** `Infotact_Data_Analyst_internship`  
+**Target Repository:** `AtmoSync_Micro_Climate_Arbitrage_Analytics`
 **Author:** Siddarth (Lead Data Engineer — Task A)  
 
 ---
@@ -77,13 +77,13 @@ Clone the official internship repository and check out the verified Task A featu
 
 ```powershell
 # Clone the repository
-git clone https://github.com/RohanVipin/Infotact_Data_Analyst_internship.git
+git clone https://github.com/RohanVipin/AtmoSync_Micro_Climate_Arbitrage_Analytics.git
 
 # Navigate into the project root directory
-cd Infotact_Data_Analyst_internship
+cd AtmoSync_Micro_Climate_Arbitrage_Analytics
 
 # Checkout the active feature branch
-git checkout feature/siddarth-simulation-event-engineering
+git checkout feature/siddarth-task-a
 
 # Verify current branch and latest commit
 git branch --show-current
@@ -92,7 +92,7 @@ git log -1 --oneline
 
 ### 3.2 Directory Structure Overview
 ```text
-Infotact_Data_Analyst_internship/
+AtmoSync_Micro_Climate_Arbitrage_Analytics/
 ├── docker-compose.kafka.yml      # Root-level KRaft Kafka Docker Compose file
 ├── requirements.txt              # Core production runtime dependencies
 ├── requirements-dev.txt          # Development, testing, and coverage dependencies
@@ -561,7 +561,7 @@ docker compose -f docker-compose.kafka.yml down -v
 ### Fast Track 1: Local JSONL Simulation (No Docker / 30-Second Setup)
 - [ ] 1. Clone repository and check out branch:
   ```powershell
-  git checkout feature/siddarth-simulation-event-engineering
+  git checkout feature/siddarth-task-a
   ```
 - [ ] 2. Activate Python virtual environment:
   ```powershell
@@ -600,8 +600,8 @@ docker compose -f docker-compose.kafka.yml down -v
 ## 15. References and Authoritative Documentation
 
 For further architectural and technical specifications, refer to the companion documents:
-- [DATA_CONTRACT.md](file:///e:/AtmoSync/Infotact_Data_Analyst_internship/docs/DATA_CONTRACT.md): Canonical Version-1 Event Schema, Field Specifications, and Validation Rules.
-- [ARCHITECTURE.md](file:///e:/AtmoSync/Infotact_Data_Analyst_internship/docs/ARCHITECTURE.md): Complete System Architecture, Package Hierarchy, and Lifecycle Design.
-- [STAGE_5_KAFKA_DESIGN.md](file:///e:/AtmoSync/Infotact_Data_Analyst_internship/docs/STAGE_5_KAFKA_DESIGN.md): Historical Kafka Producer Integration Architecture.
-- [STAGE_6_2_RUNNER_DESIGN.md](file:///e:/AtmoSync/Infotact_Data_Analyst_internship/docs/STAGE_6_2_RUNNER_DESIGN.md): Simulation Runner and Metrics Specification.
-- [STAGE_6_3_CLI_GUIDE.md](file:///e:/AtmoSync/Infotact_Data_Analyst_internship/docs/STAGE_6_3_CLI_GUIDE.md): Historical CLI Operational Guide.
+- [DATA_CONTRACT.md](DATA_CONTRACT.md): Canonical Version-1 Event Schema, Field Specifications, and Validation Rules.
+- [ARCHITECTURE.md](ARCHITECTURE.md): Complete System Architecture, Package Hierarchy, and Lifecycle Design.
+- [STAGE_5_KAFKA_DESIGN.md](STAGE_5_KAFKA_DESIGN.md): Historical Kafka Producer Integration Architecture.
+- [STAGE_6_2_RUNNER_DESIGN.md](STAGE_6_2_RUNNER_DESIGN.md): Simulation Runner and Metrics Specification.
+- [STAGE_6_3_CLI_GUIDE.md](STAGE_6_3_CLI_GUIDE.md): Historical CLI Operational Guide.

@@ -370,11 +370,12 @@ Never invent results.
 
 ## 10. Git and GitHub contribution rules
 
-Siddarth's intended branch:
+Siddarth's personal working branch:
 
 ``` text
-feature/siddarth-simulation-event-engineering
+feature/siddarth-task-a
 ```
+*(Initially proposed as `feature/siddarth-simulation-event-engineering`)*
 
 Before creating or switching branches:
 
