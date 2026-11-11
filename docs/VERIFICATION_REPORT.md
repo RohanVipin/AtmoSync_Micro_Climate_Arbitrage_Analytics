@@ -127,6 +127,20 @@ Prior to Documentation Phase D, a dedicated live verification session was execut
 
 ---
 
+### 4.4 Execution D: November 11 Configuration & Sensor Verification Suite
+During the November 11 milestone audit, dedicated verification was performed on the configuration loader, virtual sensor statistical models, and PRNG stream isolation:
+
+| Subsystem / Test Suite | Executed Command | Test Count | Passed | Failed | Duration | Verification Focus |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **Configuration Subsystem** | `pytest tests/test_configuration.py -v` | 51 | 51 | 0 | 0.64s | Duplicate YAML keys, required sections, non-finite interval rejection, container ID validation, sensor limit constraints. |
+| **Temperature Sensor** | `pytest tests/test_temperature_sensor.py -v` | 11 | 11 | 0 | 0.22s | Gaussian distribution ($\mu=4.0, \sigma=1.0$), 2-decimal rounding, effective boundaries, cross-process SHA-256 seed repeatability. |
+| **Humidity Sensor** | `pytest tests/test_humidity_sensor.py -v` | 10 | 10 | 0 | 0.23s | Bounded normal distribution ($\mu=85.0, \sigma=2.5$), physical bounds $[0.0, 100.0]\%$, 1-decimal rounding, PRNG stream isolation from temperature. |
+| **Vibration Sensor** | `pytest tests/test_vibration_sensor.py -v` | 11 | 11 | 0 | 0.28s | Rayleigh distribution ($x=\sigma\sqrt{-2\ln(u)}, \sigma=0.15$), strictly non-negative ($x \ge 0$), 3-decimal rounding, PRNG stream isolation from temperature. |
+| **Container Simulator** | `pytest tests/test_container_simulator.py -v` | 8 | 8 | 0 | 0.11s | Fleet sensor coordination, container-specific SHA-256 seed derivation, Option A multiplicity (1 event per sensor reading), error isolation. |
+| **Full Non-Integration Suite** | `pytest -m "not integration"` | 372 | 372 | 0 | 1.53s | Complete Task A unit regression suite across all 21 test files. |
+
+---
+
 ## 5. System Verification Matrix
 
 | Component | Tested Feature | Verification Method | Reported Result | Evidence Source | Classification |
