@@ -1,0 +1,34 @@
+name: 'dbt_atmosync'
+version: '1.0.0'
+config-version: 2
+
+# Profile to use for connection
+profile: 'dbt_atmosync'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_atmosync:
+    staging:
+      +materialized: view
+      +schema: STG
+    intermediate:
+      +materialized: view
+      +schema: INT
+    marts:
+      +materialized: table
+      +schema: MARTS
+
+seeds:
+  dbt_atmosync:
+    +schema: MARTS
+

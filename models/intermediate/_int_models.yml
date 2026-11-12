@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: int_sensor_excursions
+    description: "Enriches sensor readings with commodity thresholds, detects out-of-bound micro-climate excursions, and evaluates thermal strain"
+    columns:
+      - name: event_id
+        description: "Sensor event unique identifier"
+        tests:
+          - unique
+          - not_null
+      - name: container_id
+        description: "Reefer container ID"
+        tests:
+          - not_null
+      - name: commodity
+        description: "Standardized commodity identifier"
+        tests:
+          - not_null
+      - name: temp_status
+        description: "Temperature classification: UNDER_TEMP, OVER_TEMP, or NORMAL"
+        tests:
+          - accepted_values:
+              values: ['UNDER_TEMP', 'OVER_TEMP', 'NORMAL']
+      - name: humidity_status
+        description: "Humidity classification: LOW_HUMIDITY, HIGH_HUMIDITY, or NORMAL"
+        tests:
+          - accepted_values:
+              values: ['LOW_HUMIDITY', 'HIGH_HUMIDITY', 'NORMAL']
+      - name: is_vibration_shock
+        description: "Boolean flag indicating whether vibration exceeded safe thresholds"
+      - name: temp_delta_violation
+        description: "Magnitude of temperature boundary violation in degrees Celsius"
+      - name: cargo_nominal_value_usd
+        description: "Total baseline monetary value of the cargo"
+

@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: dim_commodity
+    description: "Commodity dimension providing threshold specifications and market baselines"
+    columns:
+      - name: commodity
+        description: "Primary key: normalized lowercase commodity code"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_container
+    description: "Container dimension capturing distinct refrigerated container profiles"
+    columns:
+      - name: container_id
+        description: "Primary key: container unique identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_sensor_telemetry
+    description: "Incremental fact table containing all sensor telemetry readings, clustered for Superset querying"
+    columns:
+      - name: event_id
+        description: "Primary key: telemetry event id"
+        tests:
+          - unique
+          - not_null
+      - name: event_timestamp
+        description: "Event occurrence timestamp"
+        tests:
+          - not_null
+      - name: container_id
+        description: "Container foreign key"
+        tests:
+          - not_null
+      - name: commodity
+        description: "Commodity foreign key"
+        tests:
+          - not_null
+
+  - name: fct_arbitrage_risk_summary
+    description: "Aggregated container-level risk table driving micro-climate arbitrage and rerouting recommendations"
+    columns:
+      - name: container_id
+        description: "Container unique identifier"
+        tests:
+          - unique
+          - not_null
+      - name: arbitrage_action_flag
+        description: "Recommended operational action (CONTINUE_TO_PRIMARY_DESTINATION, SECONDARY_MARKET_DISCOUNT, IMMEDIATE_LOCAL_SALVAGE)"
+        tests:
+          - accepted_values:
+              values: [
+                'CONTINUE_TO_PRIMARY_DESTINATION',
+                'SECONDARY_MARKET_DISCOUNT',
+                'IMMEDIATE_LOCAL_SALVAGE'
+              ]
+

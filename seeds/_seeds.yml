@@ -1,0 +1,34 @@
+version: 2
+
+seeds:
+  - name: seed_commodity_thresholds
+    description: "Standardized micro-climate tolerance thresholds and pricing baselines per commodity"
+    columns:
+      - name: commodity
+        description: "Primary key: normalized lowercase commodity code matching IoT sensor readings"
+        tests:
+          - unique
+          - not_null
+      - name: commodity_name
+        description: "Human-readable commodity display name"
+        tests:
+          - not_null
+      - name: category
+        description: "Commodity sector: Berries, Bio-Pharma, Seafood, Produce, Dairy"
+      - name: temp_min_celsius
+        description: "Lower threshold for safe transit temperature"
+      - name: temp_max_celsius
+        description: "Upper threshold for safe transit temperature"
+      - name: humidity_min_pct
+        description: "Lower relative humidity threshold"
+      - name: humidity_max_pct
+        description: "Upper relative humidity threshold"
+      - name: max_vibration_g
+        description: "Maximum allowable vibration threshold in g-force"
+      - name: base_price_per_kg_usd
+        description: "Base market price per kilogram in USD"
+      - name: critical_excursion_hours
+        description: "Cumulative excursion duration resulting in total spoilage"
+      - name: spoilage_rate_per_degree_hour
+        description: "Cargo degradation percentage per degree-hour of violation"
+

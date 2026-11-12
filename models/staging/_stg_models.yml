@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_sensor_readings
+    description: "Cleaned, cast, deduplicated, and normalized IoT sensor telemetry readings"
+    columns:
+      - name: event_id
+        description: "Unique identifier for each sensor telemetry emission"
+        tests:
+          - unique
+          - not_null
+      - name: event_timestamp
+        description: "Timestamp when the sensor event occurred on the container"
+        tests:
+          - not_null
+      - name: container_id
+        description: "Identifier for the refrigerated container / reefer unit"
+        tests:
+          - not_null
+      - name: temperature_celsius
+        description: "Container internal temperature reading in Celsius"
+      - name: humidity_pct
+        description: "Container internal relative humidity reading in percent"
+      - name: vibration_g
+        description: "Tri-axial vibration shock reading in g-force"
+      - name: latitude
+        description: "Geographic latitude of the container"
+      - name: longitude
+        description: "Geographic longitude of the container"
+      - name: commodity
+        description: "Standardized lowercase commodity key used across all layers"
+        tests:
+          - not_null
+      - name: quantity_kg
+        description: "Net cargo quantity in kilograms"
+        tests:
+          - not_null
+      - name: ingested_at
+        description: "Timestamp when record was loaded into Snowflake"
+

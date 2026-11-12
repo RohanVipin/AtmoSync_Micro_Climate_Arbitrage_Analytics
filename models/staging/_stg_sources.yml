@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: raw_kafka
+    database: ATMOSYNC_DB
+    schema: RAW
+    description: "Raw telemetry streams ingested into Snowflake via Kafka Connector"
+    tables:
+      - name: CONTAINER_TELEMETRY_RAW
+        description: "Append-only landing table storing raw JSON sensor telemetry"
+        columns:
+          - name: RECORD_METADATA
+            description: "Kafka metadata: topic name, partition index, offset, and timestamp"
+          - name: RECORD_CONTENT
+            description: "Raw JSON payload emitted by IoT simulator"
+          - name: INGESTED_AT
+            description: "Snowflake ingestion timestamp"
+
