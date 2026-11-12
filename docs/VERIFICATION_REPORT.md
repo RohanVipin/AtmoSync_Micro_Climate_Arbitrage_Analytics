@@ -141,6 +141,20 @@ During the November 11 milestone audit, dedicated verification was performed on 
 
 ---
 
+### 4.5 Execution E: November 12 Event Engineering & Serialization Verification Suite
+During the November 12 milestone audit, exhaustive verification of event engineering, canonical schema validation, deterministic JSON serialization, and JSON Lines file persistence was performed:
+
+| Subsystem / Test Suite | Executed Command | Test Count | Passed | Failed | Duration | Verification Focus |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **EventBuilder** | `pytest tests/test_event_builder.py -v` | 15 | 15 | 0 | 0.12s | Timezone-aware UTC ISO-8601 millisecond timestamps ending in `'Z'`, UUIDv4 surrogate keys, invalid input rejection. |
+| **EventSerializer** | `pytest tests/test_event_serializer.py -v` | 28 | 28 | 0 | 0.15s | Canonical 7-field sequence (`CANONICAL_FIELD_ORDER`), configured delimiters `(',', ': ')`, `allow_nan=False`, byte-level determinism, round-trip deserialization. |
+| **EventValidator** | `pytest tests/test_event_validator.py -v` | 48 | 48 | 0 | 0.18s | Strict 7-field contract enforcement, rejection of unexpected fields, invalid UUID versions, naive/non-UTC offsets, boolean types, and non-finite numbers. |
+| **JsonlWriter** | `pytest tests/test_jsonl_writer.py -v` | 13 | 13 | 0 | 0.08s | Atomic batch pre-validation, append-only disk writing, parent directory auto-creation, UTF-8 encoding, one JSON object per line. |
+| **End-to-End Pipeline** | Custom verification harness | 9 | 9 | 0 | 0.05s | Virtual Sensor Reading -> EventBuilder -> SensorEvent -> EventValidator -> EventSerializer -> JsonlWriter -> Disk Read & Parse across 3 containers and 3 sensor modalities. |
+| **Full Non-Integration Suite** | `pytest -m "not integration"` | 372 | 372 | 0 | 9.46s | Complete Task A unit regression suite across all 21 test files. |
+
+---
+
 ## 5. System Verification Matrix
 
 | Component | Tested Feature | Verification Method | Reported Result | Evidence Source | Classification |
@@ -149,7 +163,7 @@ During the November 11 milestone audit, dedicated verification was performed on 
 | **ConfigLoader** | Semantic validation & boundary limits | Automated unit test | Passed | `tests/test_configuration.py` | Automated unit test |
 | **BaseSensor** | SHA-256 PRNG cross-process repeatability | Automated unit test | Passed | `tests/test_temperature_sensor.py` | Automated unit test |
 | **TemperatureSensor** | Gaussian distribution & 2-decimal rounding | Automated unit test | Passed | `tests/test_temperature_sensor.py` | Automated unit test |
-| **HumiditySensor** | Physical boundary clamping $[0, 100]\%$ | Automated unit test | Passed | `tests/test_humidity_sensor.py` | Automated unit test |
+| **HumiditySensor** | Rejection sampling within $[0.0, 100.0]\%$ | Automated unit test | Passed | `tests/test_humidity_sensor.py` | Automated unit test |
 | **VibrationSensor** | Rayleigh non-negative invariant ($x \ge 0$) | Automated unit test | Passed | `tests/test_vibration_sensor.py` | Automated unit test |
 | **EventBuilder** | Timezone-aware UTC ISO-8601 formatting ('Z') | Automated unit test | Passed | `tests/test_event_builder.py` | Automated unit test |
 | **EventValidator** | Strict v1 7-field schema enforcement | Automated unit test | Passed | `tests/test_event_validator.py` | Automated unit test |

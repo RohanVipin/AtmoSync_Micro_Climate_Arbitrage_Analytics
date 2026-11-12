@@ -5,10 +5,10 @@
 **Scope:** Task A — IoT Sensor Simulator, Event Engineering, Unified Runner, and Kafka Producer  
 **System:** AtmoSync — Micro-Climate Arbitrage Analytics  
 **Repository:** `AtmoSync_Micro_Climate_Arbitrage_Analytics`  
-**Branch:** `feature/siddarth-task-a`  
-**Baseline Commit:** `6296daa` (*"Chore:import existing atmosync project implementation"*); Verified Milestone: `1f668b0`
+**Branch:** `feature/siddarth-task-a`
+**Baseline Commit:** `6296daa` (*"Chore:import existing atmosync project implementation"*); Verified Milestone: `2dd40e5`
 **Author:** Siddarth Thota (Lead Data Engineer — Task A)
-**Date:** November 11, 2026
+**Date:** November 12, 2026
 
 ---
 
@@ -87,7 +87,7 @@ The audit evaluates all applicable functional requirements (FR), engineering inv
 - **Key Modules:** `event_schema.py`, `event_builder.py`, `event_serializer.py`, `event_validator.py`
 - **Architectural Safeguards:** Implements **Option A multiplicity** (one top-level event per sensor reading). The canonical schema version 1 requires exactly seven fields:
   `schema_version` (int: 1), `event_id` (str: UUIDv4), `container_id` (str), `sensor_type` (str: `temperature|humidity|vibration`), `observed_at` (str: UTC ISO-8601 with millisecond precision ending in `'Z'`), `value` (float: finite), `unit` (str).
-- **Deterministic Serialization:** Enforces strict alphabetical key sorting, compact delimiters `(',', ': ')`, `allow_nan=False`, and UTF-8 encoding.
+- **Deterministic Serialization:** Enforces fixed canonical field ordering (`CANONICAL_FIELD_ORDER`), configured delimiters `(',', ': ')`, `allow_nan=False`, and UTF-8 encoding.
 - **Verification Evidence:** 91 unit tests pass across `test_event_builder.py` (15), `test_event_validator.py` (48), and `test_event_serializer.py` (28).
 
 ### 3.4 Multi-Sink Persistence & Fan-Out Architecture (`simulation/output/`)
