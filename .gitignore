@@ -2,5 +2,12 @@ target/
 dbt_packages/
 logs/
 *.pyc
+*.pyo
+*.pyd
+__pycache__/
 .env
-
+.venv/
+*venv*/
+.pytest_cache/
+.DS_Store
+Thumbs.db

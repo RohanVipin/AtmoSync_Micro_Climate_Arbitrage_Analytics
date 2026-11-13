@@ -1,0 +1,6 @@
+# AtmoSync Task 2: Warehouse and ELT Engineering
+# Ingestion Consumer Dependencies (Kafka to Snowflake)
+confluent-kafka==2.16.1
+snowflake-connector-python==5.2.0
+pytest>=8.0.0
+

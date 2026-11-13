@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: stg_sensor_events_v1
+    description: >
+      Pivoted wide-format staging model for Schema Version 1 canonical IoT sensor telemetry.
+      Transforms independent single-sensor readings (temperature, humidity, vibration)
+      into an observation snapshot strictly grouped by (container_id, observed_at).
+      Filters exclusively on schema_version = 1, ensuring historical 10-field data remains isolated.
+    columns:
+      - name: measurement_id
+        description: "Deterministic MD5 surrogate hash key of container_id and observed_at"
+        tests:
+          - unique
+          - not_null
+      - name: container_id
+        description: "Standardized container identifier (e.g. CONTAINER_001)"
+        tests:
+          - not_null
+      - name: observed_at
+        description: "UTC observation timestamp with millisecond precision"
+        tests:
+          - not_null
+      - name: temperature
+        description: "Internal container temperature reading in degrees Celsius"
+      - name: humidity
+        description: "Internal container relative humidity reading in percent"
+      - name: vibration
+        description: "Tri-axial vibration shock acceleration reading in m/s^2"
+      - name: temperature_unit
+        description: "Engineering unit for temperature reading (typically 'celsius')"
+      - name: humidity_unit
+        description: "Engineering unit for humidity reading (typically 'percent')"
+      - name: vibration_unit
+        description: "Engineering unit for vibration reading (typically 'm/s^2')"
+      - name: sensor_count
+        description: "Cardinality of distinct sensor types captured in this container observation"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3]
+      - name: ingested_at
+        description: "Maximum Snowflake ingestion timestamp for records in this observation snapshot"
+        tests:
+          - not_null
+
